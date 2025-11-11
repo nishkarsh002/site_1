@@ -31,10 +31,6 @@ app.post("/send-email", upload.single("file"), async (req, res) => {
   const { name, email, number, message, role, subject } = req.body;
   const file = req.file;
 
-  console.log("Received email request:", { name, email, role, subject });
-  console.log("File received:", file ? file.originalname : "No file");
-  console.log("API Key check:", RESEND_API_KEY ? "Set" : "Missing");
-
   try {
     let emailSubject = "";
     let emailText = "";
@@ -102,25 +98,19 @@ app.post("/send-email", upload.single("file"), async (req, res) => {
     const data = await response.json();
 
     if (!response.ok) {
-      console.error("Resend API error:", data);
       return res.status(500).json({
         message: "Error sending email",
         error: data.message || "Unknown error",
       });
     }
-
-    console.log("Email sent successfully:", data.id);
     
     // Clean up uploaded file if exists
     if (file) {
-      fs.unlink(file.path, (err) => {
-        if (err) console.error("Error deleting file:", err);
-      });
+      fs.unlink(file.path, () => {});
     }
 
     res.status(200).json({ message: "Email sent successfully" });
   } catch (error) {
-    console.error("Error sending email:", error);
     return res.status(500).json({
       message: "Error sending email",
       error: error.message,
