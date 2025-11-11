@@ -3,7 +3,6 @@ require("dotenv").config({ path: ".env.local" });
 const express = require("express");
 const cors = require("cors");
 const multer = require("multer");
-const path = require("path");
 const fs = require("fs");
 
 const upload = multer({ dest: "uploads/" });
@@ -65,8 +64,8 @@ app.post("/send-email", upload.single("file"), async (req, res) => {
 
     // Prepare Resend API request
     const emailData = {
-      from: "onboarding@resend.dev", // Use your verified domain later
-      to: "nishdixit0207@gmail.com", // Must match your Resend signup email
+      from: "onboarding@resend.dev",
+      to: "n79420953@gmail.com",
       reply_to: email,
       subject: emailSubject,
       text: emailText,
@@ -117,7 +116,6 @@ app.post("/send-email", upload.single("file"), async (req, res) => {
     });
   }
 });
-
 
 
 const PORT = process.env.PORT || 3001;
