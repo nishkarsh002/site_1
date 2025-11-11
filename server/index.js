@@ -32,6 +32,7 @@ app.post("/send-email", upload.single("file"), async (req, res) => {
   const file = req.file;
 
   console.log("Received email request:", { name, email, role, subject });
+  console.log("File received:", file ? file.originalname : "No file");
   console.log("API Key check:", RESEND_API_KEY ? "Set" : "Missing");
 
   try {
@@ -48,8 +49,9 @@ app.post("/send-email", upload.single("file"), async (req, res) => {
         <p><strong>Role:</strong> ${role}</p>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${number}</p>
-        <p><strong>Message:</strong> ${message}</p>
+        <p><strong>Phone:</strong> ${number || 'Not provided'}</p>
+        <p><strong>Message:</strong> ${message || 'No message'}</p>
+        ${file ? `<p><strong>Resume:</strong> Attached</p>` : ''}
       `;
     } else {
       // 📩 Contact Form
@@ -75,8 +77,18 @@ app.post("/send-email", upload.single("file"), async (req, res) => {
       html: emailHtml,
     };
 
-    // Note: File attachments with Resend require base64 encoding
-    // For now, we'll skip attachments - add them later if needed
+    // Add file attachment if present (for career form)
+    if (file) {
+      const fileContent = fs.readFileSync(file.path);
+      const base64File = fileContent.toString('base64');
+      
+      emailData.attachments = [
+        {
+          filename: file.originalname,
+          content: base64File,
+        },
+      ];
+    }
 
     const response = await fetch("https://api.resend.com/emails", {
       method: "POST",
