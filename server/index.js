@@ -68,7 +68,7 @@ app.post("/send-email", upload.single("file"), async (req, res) => {
     // Prepare Resend API request
     const emailData = {
       from: "onboarding@resend.dev", // Use your verified domain later
-      to: "dixitnishkarsh0216@gmail.com",
+      to: "nishdixit0207@gmail.com", // Must match your Resend signup email
       reply_to: email,
       subject: emailSubject,
       text: emailText,
