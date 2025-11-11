@@ -81,12 +81,12 @@ export const servicesOffer = [
 ];
 
  export const testimonials = [
-      {
-          name: "Mahindra Logistics",
-          // title: "Senior Developer",
-          feedback: "A reliable tech partner that truly understands business needs. From planning to deployment, everything was handled with precision.",
-          image: "/assets/client/cl1.webp", 
-      },
+      // {
+      //     name: "Mahindra Logistics",
+      //     // title: "Senior Developer",
+      //     feedback: "A reliable tech partner that truly understands business needs. From planning to deployment, everything was handled with precision.",
+      //     image: "/assets/client/cl1.webp", 
+      // },
       {
           name: "Girnarsoft",
           // title: "Project Manager",

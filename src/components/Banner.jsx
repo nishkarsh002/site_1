@@ -74,7 +74,7 @@ const Banner = () => {
             <Marquee gradient={false} speed={50}>
               {[
               
-                "assets/client/cl1.webp",
+                // "assets/client/cl1.webp",
                 "assets/client/cl2.webp",
                 "assets/client/cl3.webp",
                 
