@@ -12,46 +12,57 @@ export default function CareersSection() {
 
   return (
     <>
-      <div className="bg-gray-100 py-12 px-4 md:px-20 text-center">
-        <h2 className="text-3xl font-bold mb-4">Start your career at ItFirm</h2>
-        <p className="text-gray-700 text-xl max-w-xl mx-auto">
-          We're looking for talented engineers and tech enthusiasts who want to build great products and grow with us.
+      <div className="bg-gradient-to-br from-gray-50 to-purple-50 py-20 px-4 md:px-20 text-center">
+        <span className="inline-block bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold px-6 py-3 rounded-full shadow-lg text-sm uppercase tracking-wider mb-6">
+          💼 Join Our Team
+        </span>
+        <h2 className="text-4xl md:text-5xl font-black mb-6 text-gray-900">Launch Your Career at <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-purple-600">TechVerse</span></h2>
+        <p className="text-gray-700 text-xl max-w-3xl mx-auto leading-relaxed">
+          We're seeking passionate engineers and tech innovators who want to create exceptional products and grow alongside industry leaders.
         </p>
-        
       </div>
 
-<p className="text-center text-xl sm:text-2xl lg:text-4xl font-bold py-3 sm:py-4 font-magical bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 bg-clip-text text-transparent drop-shadow-md px-2 sm:px-0 leading-snug">
-  Current Openings – Be a Part of Something Big
-</p>
-
+      <div className="text-center py-12 bg-gradient-to-r from-green-500 to-purple-600">
+        <p className="text-2xl sm:text-3xl lg:text-4xl font-black text-white px-4 leading-tight">
+          🚀 Current Openings – Be Part of Something Extraordinary
+        </p>
+      </div>
 
       {/* Cards Section */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-4 md:px-20 pb-20">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-4 md:px-20 py-20 bg-gradient-to-b from-white to-gray-50">
         {roles.map((role) => (
-          <div key={role.id} className="bg-white rounded-xl shadow-md p-6 relative">
-            <h3 className="text-xl font-bold text-blue-700 mb-2">{role.title}</h3>
-            <p className="text-gray-600 mb-1">Openings: <strong>{role.openings}</strong></p>
-            <p className="text-gray-600 mb-1">Minimum Experience(in years): <strong>
-              {role.experience}</strong></p>
-            <p className="text-gray-700 mb-4">{role.objective}</p>
-
-            <div className="flex gap-2">
-
-              <button
-              onClick={() => handleOpen(role.id)}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded"
-            >
-              Apply
-            </button>
-              
-            <button
-              onClick={() => setShowInfo(showInfo === role.id ? null: role.id)}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded"
-            >
-              {showInfo === role.id ? "Hide" : "More Info"}
-            </button>
+          <div key={role.id} className="bg-white rounded-3xl shadow-xl p-8 relative border-2 border-gray-200 hover:border-green-400 transition-all duration-300 hover:shadow-2xl hover:scale-105">
+            <div className="absolute -top-4 -right-4 w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full flex items-center justify-center text-white font-bold shadow-lg">
+              {role.openings}
             </div>
-            
+            <h3 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-purple-600 mb-4">{role.title}</h3>
+            <div className="space-y-2 mb-6">
+              <p className="text-gray-600 flex items-center gap-2">
+                <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+                <strong>Openings:</strong> {role.openings}
+              </p>
+              <p className="text-gray-600 flex items-center gap-2">
+                <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
+                <strong>Experience:</strong> {role.experience} years
+              </p>
+            </div>
+            <p className="text-gray-700 mb-6 leading-relaxed">{role.objective}</p>
+
+            <div className="flex gap-3">
+              <button
+                onClick={() => handleOpen(role.id)}
+                className="flex-1 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white px-6 py-3 rounded-full font-semibold shadow-lg hover:shadow-green-500/50 transition-all duration-300 transform hover:scale-105"
+              >
+                Apply Now
+              </button>
+              
+              <button
+                onClick={() => setShowInfo(showInfo === role.id ? null: role.id)}
+                className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-800 px-6 py-3 rounded-full font-semibold border-2 border-gray-300 hover:border-gray-400 transition-all duration-300"
+              >
+                {showInfo === role.id ? "Hide" : "Details"}
+              </button>
+            </div>
 
             {/* Apply Form */}
             {showForm === role.id && (
@@ -59,8 +70,8 @@ export default function CareersSection() {
             )}
 
             {showInfo === role.id && (
-              <div className="mt-4 p-4 bg-gray-100 border-l-4 border-blue-600 rounded">
-                <p className="text-sm text-gray-700">{role.details}</p>
+              <div className="mt-6 p-6 bg-gradient-to-br from-green-50 to-purple-50 border-l-4 border-green-500 rounded-2xl">
+                <p className="text-sm text-gray-800 leading-relaxed">{role.details}</p>
               </div>
             )}
           </div>

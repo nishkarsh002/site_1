@@ -20,20 +20,21 @@ const Navbar = () => {
   return (
     <div className="w-full">
 
-      <nav className="bg-white shadow relative z-30">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+      <nav className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 shadow-xl relative z-30 border-b border-green-500/20">
+        <div className="container mx-auto px-6 py-5 flex justify-between items-center">
 
-            <Link to="/">
-              <img src="../assets/img/logo.jpg" alt="Logo" className="h-16" />
+            <Link to="/" className="flex items-center gap-3 group">
+              <img src="../assets/img/logo.jpg" alt="Logo" className="h-14 rounded-lg group-hover:scale-110 transition-transform duration-300" />
+              <span className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-purple-500 hidden md:block">TechVerse</span>
             </Link>
          
 
          
-          <ul className="hidden lg:flex items-center gap-6 text-sm font-medium">
+          <ul className="hidden lg:flex items-center gap-8 text-base font-medium">
             {navItems.map((item, i) => (
               <li key={i} className="relative group">
                 { (
-                  <Link to={item.link} className="hover:text-blue-600 text-xl">
+                  <Link to={item.link} className="text-gray-300 hover:text-green-400 transition-colors duration-300 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-green-400 after:transition-all after:duration-300 hover:after:w-full">
                     {item.label}
                   </Link>
                 )}
@@ -45,7 +46,7 @@ const Navbar = () => {
           <div className="flex items-center gap-4"> 
             <button
               onClick={toggleMobileMenu}
-              className="lg:hidden text-gray-600 hover:text-blue-600"
+              className="lg:hidden text-green-400 hover:text-green-300 text-2xl"
             >
               {mobileMenuOpen ? <FaTimes /> : <FaBars />}
             </button>
@@ -54,11 +55,11 @@ const Navbar = () => {
 
     
         {mobileMenuOpen && (
-          <div className="lg:hidden bg-white px-4">
-            <ul className="flex flex-col gap-2">
+          <div className="lg:hidden bg-gray-900 px-4 border-t border-green-500/20">
+            <ul className="flex flex-col gap-2 py-4">
               {navItems.map((item, i) => (
                 <li key={i}>
-                  <Link to={item.link} className="block py-2 border-b">
+                  <Link to={item.link} className="block py-3 text-gray-300 hover:text-green-400 hover:bg-gray-800 px-4 rounded transition-all">
                     {item.label}
                   </Link>
                 </li>

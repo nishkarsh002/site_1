@@ -1,28 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+* {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
 
 .flip-hover {
-  transition: transform 0.6s;
+  transition: transform 0.5s ease-in-out;
   transform-style: preserve-3d;
 }
 
 .flip-hover:hover {
-  transform: rotateY(180deg);
+  transform: scale(1.05) rotateY(5deg);
 }
-
-
 
 .scrollbar-hide {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 .scrollbar-hide::-webkit-scrollbar {
-  display: none; /* Chrome, Safari and Opera */
+  display: none;
 }
 
-/* Optional custom scrollbar styling */
 .scrollbar-hide::-webkit-scrollbar {
   height: 6px;
 }
@@ -30,37 +32,46 @@
     background: #f1f1f1;
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #888;
+    background: #10b981;
     border-radius: 5px;
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: #059669;
 }
 
-@keyframes rotateBackground {
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes slideIn {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateX(-30px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
-.rotating-background {
-  background-image: url('https://html.themexriver.com/it-firm/images/background/pattern-18.png');
-  background-repeat: no-repeat;
-  background-size: cover; 
-  /* background-position: right; */
+.floating-animation {
+  animation: float 3s ease-in-out infinite;
+}
 
-  width: 25%;
-  height: 35vh;
-  
- 
-  animation: rotateBackground 10s linear infinite;
-  /* To rotate background instead of entire element: */
-  
+.slide-in {
+  animation: slideIn 0.6s ease-out;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #10b981 0%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }

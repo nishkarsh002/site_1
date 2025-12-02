@@ -15,43 +15,49 @@ const Testimonial = () => {
   const { name, title, feedback, image } = testimonials[current];
 
   return (
-    <div className="bg-white py-20 px-4 relative overflow-hidden">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
+    <div className="bg-gradient-to-br from-gray-50 to-purple-50 py-24 px-4 relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-96 h-96 bg-green-300/20 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-300/20 rounded-full blur-3xl"></div>
+      
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-16 relative z-10">
         {/* Left Side - Heading */}
         <div className="md:w-1/2 text-center md:text-left">
-           <button className="bg-white text-blue-600 font-semibold px-5 py-2 rounded-full shadow text-lg mb-3">
-              Testimonial ~
-            </button>
-          <h2 className="text-4xl font-bold mt-2 mb-4">
-            What Our <span className="text-blue-600">Customers</span> Have Said.
+           <span className="inline-block bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold px-6 py-3 rounded-full shadow-lg text-sm uppercase tracking-wider mb-6">
+              💬 Client Stories
+            </span>
+          <h2 className="text-4xl md:text-5xl font-black mt-2 mb-6 leading-tight">
+            Loved by <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-purple-600">Businesses</span> Worldwide
           </h2>
-          <p className="text-gray-600">
-            We value our customers and their feedback. Here's what they think about working with us.
+          <p className="text-gray-700 text-lg leading-relaxed">
+            Real feedback from real clients who've experienced the power of our solutions. Their success is our greatest achievement.
           </p>
         </div>
 
         {/* Right Side - Testimonial Card */}
-        <div className="bg-gray-50 shadow-lg rounded-lg p-8 relative w-full md:w-1/2">
-          <p className="text-gray-700 text-lg italic mb-6">"{feedback}"</p>
-          <div className="flex items-center gap-4">
-            <img src={image} alt={name} className="w-14 h-14 rounded-full border-2 border-blue-500" />
+        <div className="bg-white shadow-2xl rounded-3xl p-10 relative w-full md:w-1/2 border-2 border-green-100 hover:border-green-300 transition-all duration-300">
+          <div className="absolute -top-6 -left-6 w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center text-white text-3xl shadow-lg">
+            "
+          </div>
+          <p className="text-gray-800 text-lg leading-relaxed mb-8 pt-4 font-medium italic">"{feedback}"</p>
+          <div className="flex items-center gap-5 mb-6">
+            <img src={image} alt={name} className="w-16 h-16 rounded-full border-4 border-green-400 shadow-lg" />
             <div>
-              <h4 className="font-bold text-gray-900">{name}</h4>
-              <p className="text-blue-600 text-sm">{title}</p>
+              <h4 className="font-bold text-gray-900 text-lg">{name}</h4>
+              <p className="text-green-600 text-sm font-semibold">{title}</p>
             </div>
           </div>
 
           {/* Navigation Arrows */}
-          <div className="flex justify-between items-center mt-4">
+          <div className="flex justify-center gap-4 mt-6">
             <button
               onClick={prevTestimonial}
-              className="bg-white border border-gray-300 text-gray-600 hover:bg-blue-100 rounded-full w-10 h-10 flex items-center justify-center shadow-md"
+              className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg hover:shadow-green-500/50 transition-all duration-300 transform hover:scale-110"
             >
               &#8592;
             </button>
             <button
               onClick={nextTestimonial}
-              className="bg-white border border-gray-300 text-gray-600 hover:bg-blue-100 rounded-full w-10 h-10 flex items-center justify-center shadow-md"
+              className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg hover:shadow-green-500/50 transition-all duration-300 transform hover:scale-110"
             >
               &#8594;
             </button>

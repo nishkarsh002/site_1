@@ -11,9 +11,12 @@ const Career = () => {
       <Navbar />
 
 
-      <div className="relative h-[400px] bg-cover bg-center flex items-center justify-center" style={{ backgroundImage: "url('../assets/test/img.jpg')" }}>
-        {/* <div className="absolute inset-0 opacity-75" ></div> */}
-        <h1 className="text-5xl font-bold text-white relative z-10"> Career</h1>
+      <div className="relative h-[500px] bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "url('/assets/test/img.jpg')", backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
+        <div className="relative z-10 text-center">
+          <h1 className="text-6xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-purple-500 mb-4">Join Our Team</h1>
+          <p className="text-gray-300 text-xl">Build your career with innovative minds</p>
+        </div>
       </div>
 
       <CareersSection />
