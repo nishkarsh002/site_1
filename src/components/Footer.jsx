@@ -56,10 +56,10 @@ const Footer = () => {
             <div className="lg:col-span-1">
               <div className="flex items-center gap-3 mb-6">
                 <div className="relative">
-                  <div className="absolute inset-0 bg-gradient-to-r from-green-500 to-purple-500 rounded-lg blur-md opacity-50"></div>
-                  <img src="../assets/img/logo.jpg" alt="logo" className="relative h-14 rounded-lg" />
+                  <div className="absolute inset-0 rounded-lg blur-md opacity-50"></div>
+                  <img src="../assets/img/logo.png" alt="logo" className="relative h-20 rounded-lg" />
                 </div>
-                <span className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-purple-500">TechVerse</span>
+                
               </div>
               <p className="text-gray-400 text-sm mb-6 leading-relaxed">
                 Pioneering digital innovation with passion and expertise. Transforming challenges into opportunities.
@@ -109,7 +109,7 @@ const Footer = () => {
                     <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500/20 to-violet-500/20 flex items-center justify-center group-hover:scale-110 transition-transform border border-purple-500/30">
                       <FaEnvelope className="text-purple-400 text-sm" />
                     </div>
-                    <span className="text-sm">info@mileazo.com</span>
+                    <span className="text-sm">support@techhodu.com</span>
                   </a>
                 </li>
                 <li className="flex items-start gap-3 text-gray-400">
@@ -134,13 +134,13 @@ const Footer = () => {
               
               {/* Social Icons */}
               <div className="flex gap-3 mb-6">
-                <a href="https://www.facebook.com/p/Mileazo-100077308435735/" target="_blank" rel="noopener noreferrer" className="w-11 h-11 rounded-xl bg-gradient-to-br from-blue-500/20 to-blue-600/20 hover:from-blue-500 hover:to-blue-600 flex items-center justify-center transition-all duration-300 transform hover:scale-110 border border-blue-500/30 hover:border-transparent">
+                <a href="/" target="_blank" rel="noopener noreferrer" className="w-11 h-11 rounded-xl bg-gradient-to-br from-blue-500/20 to-blue-600/20 hover:from-blue-500 hover:to-blue-600 flex items-center justify-center transition-all duration-300 transform hover:scale-110 border border-blue-500/30 hover:border-transparent">
                   <FaFacebookF className="text-lg" />
                 </a>
-                <a href="https://www.linkedin.com/company/mileazo/?originalSubdomain=in" target="_blank" rel="noopener noreferrer" className="w-11 h-11 rounded-xl bg-gradient-to-br from-blue-400/20 to-blue-500/20 hover:from-blue-400 hover:to-blue-500 flex items-center justify-center transition-all duration-300 transform hover:scale-110 border border-blue-400/30 hover:border-transparent">
+                <a href="/" target="_blank" rel="noopener noreferrer" className="w-11 h-11 rounded-xl bg-gradient-to-br from-blue-400/20 to-blue-500/20 hover:from-blue-400 hover:to-blue-500 flex items-center justify-center transition-all duration-300 transform hover:scale-110 border border-blue-400/30 hover:border-transparent">
                   <FaLinkedin className="text-lg" />
                 </a>
-                <a href="https://www.instagram.com/mileazo/" target="_blank" rel="noopener noreferrer" className="w-11 h-11 rounded-xl bg-gradient-to-br from-pink-500/20 to-purple-500/20 hover:from-pink-500 hover:to-purple-500 flex items-center justify-center transition-all duration-300 transform hover:scale-110 border border-pink-500/30 hover:border-transparent">
+                <a href="/" target="_blank" rel="noopener noreferrer" className="w-11 h-11 rounded-xl bg-gradient-to-br from-pink-500/20 to-purple-500/20 hover:from-pink-500 hover:to-purple-500 flex items-center justify-center transition-all duration-300 transform hover:scale-110 border border-pink-500/30 hover:border-transparent">
                   <FaInstagram className="text-lg" />
                 </a>
               </div>
@@ -163,21 +163,6 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Bottom Bar */}
-          <div className="border-t border-gray-800/50 pt-8">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-              <p className="text-sm text-gray-500">
-                2025 © All rights reserved by <a href="#" className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-purple-500 font-bold hover:from-green-300 hover:to-purple-400 transition-all">TechVerse</a>
-              </p>
-              <div className="flex items-center gap-6 text-sm text-gray-500">
-                <a href="#" className="hover:text-green-400 transition-colors">Privacy Policy</a>
-                <span>•</span>
-                <a href="#" className="hover:text-green-400 transition-colors">Terms of Service</a>
-                <span>•</span>
-                <p>Crafted with <span className="text-green-400 animate-pulse">💚</span> for innovation</p>
-              </div>
-            </div>
-          </div>
         </div>
       </footer>
     </section>

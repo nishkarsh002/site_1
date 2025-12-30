@@ -102,7 +102,7 @@ const ContactUs = () => {
               </div>
               <div>
                 <h4 className="font-bold text-xl mb-2 text-gray-900">Phone Number</h4>
-                <p className="text-gray-700 text-lg font-semibold">0 (141) 2729706</p>
+                <p className="text-gray-700 text-lg font-semibold">+91 72056 56169</p>
               </div>
             </div>
 

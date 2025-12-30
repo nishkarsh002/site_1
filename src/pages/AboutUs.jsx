@@ -33,14 +33,14 @@ const AboutUs = () => {
           </h1>
           <p className="text-gray-700 text-lg leading-relaxed">
             In today's fast-paced digital landscape, having the right technology partner isn't just an advantage—it's essential. At
-            <b> TechVerse</b>, we merge cutting-edge innovation with proven expertise to create solutions that drive real business impact. From <b>web development and mobile apps to digital marketing and custom software</b>, we deliver comprehensive services designed around your unique goals.
+            <b> Techhodu</b>, we merge cutting-edge innovation with proven expertise to create solutions that drive real business impact. From <b>web development and mobile apps to digital marketing and custom software</b>, we deliver comprehensive services designed around your unique goals.
           </p>
           <p className="text-gray-700 text-lg leading-relaxed">
             Our resource outsourcing and dedicated development support give you instant access to world-class talent who integrate seamlessly with your team. Whether it's a sprint project or a long-term partnership, our flexible engagement models scale with your needs.
           </p>
           <div className="bg-gradient-to-r from-green-50 to-purple-50 p-6 rounded-2xl border-l-4 border-green-500">
             <p className="text-gray-800 font-medium text-lg">
-              With a client-first philosophy, seasoned professionals, and an unwavering commitment to excellence, we transform challenges into opportunities. Choose <b>TechVerse</b> — where innovation meets execution, and your success becomes our mission.
+              With a client-first philosophy, seasoned professionals, and an unwavering commitment to excellence, we transform challenges into opportunities. Choose <b>TechHodu</b> — where innovation meets execution, and your success becomes our mission.
             </p>
           </div>
           <Link to="/services">

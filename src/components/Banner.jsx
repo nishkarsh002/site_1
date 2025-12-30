@@ -89,11 +89,11 @@ const Banner = () => {
     </div>
 
     {/* Client Marquee Section - Separate with proper spacing */}
-    <div className="bg-gradient-to-b from-gray-800 to-gray-900 py-16">
+    {/* <div className="bg-gradient-to-b from-gray-800 to-gray-900 py-16">
       <div className="container mx-auto px-4">
         <div className="bg-gradient-to-r from-gray-800/80 to-gray-900/80 backdrop-blur-sm rounded-3xl p-8 md:p-12 border-2 border-green-500/20 shadow-2xl">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-            {/* Left: Text Section */}
+            Left: Text Section
             <div className="md:w-2/5 text-center md:text-left">
               <h3 className="text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-purple-500 mb-3">
                 Trusted by Industry Leaders
@@ -101,7 +101,7 @@ const Banner = () => {
               <p className="text-gray-400 text-base">Delivering excellence across the globe</p>
             </div>
 
-            {/* Right: Marquee Section */}
+            Right: Marquee Section
             <div className="md:w-3/5 w-full">
               <Marquee gradient={false} speed={50}>
                 {[
@@ -119,7 +119,7 @@ const Banner = () => {
           </div>
         </div>
       </div>
-    </div>
+    </div> */}
     </>
   );
 };

@@ -16,7 +16,7 @@ export default function CareersSection() {
         <span className="inline-block bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold px-6 py-3 rounded-full shadow-lg text-sm uppercase tracking-wider mb-6">
           💼 Join Our Team
         </span>
-        <h2 className="text-4xl md:text-5xl font-black mb-6 text-gray-900">Launch Your Career at <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-purple-600">TechVerse</span></h2>
+        <h2 className="text-4xl md:text-5xl font-black mb-6 text-gray-900">Launch Your Career at <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-purple-600">TechHodu</span></h2>
         <p className="text-gray-700 text-xl max-w-3xl mx-auto leading-relaxed">
           We're seeking passionate engineers and tech innovators who want to create exceptional products and grow alongside industry leaders.
         </p>

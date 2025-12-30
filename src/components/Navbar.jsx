@@ -24,8 +24,7 @@ const Navbar = () => {
         <div className="container mx-auto px-6 py-5 flex justify-between items-center">
 
             <Link to="/" className="flex items-center gap-3 group">
-              <img src="../assets/img/logo.jpg" alt="Logo" className="h-14 rounded-lg group-hover:scale-110 transition-transform duration-300" />
-              <span className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-purple-500 hidden md:block">TechVerse</span>
+              <img src="../assets/img/logo.png" alt="Logo" className="h-auto w-24 md:w-32 lg:w-36 group-hover:scale-110 transition-transform duration-300" />
             </Link>
          
 
