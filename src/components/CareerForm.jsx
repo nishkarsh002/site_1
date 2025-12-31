@@ -90,7 +90,7 @@ export default function CareerForm({ isOpen, onClose, role }) {
     payload.append("file", formData.file);
 
     try {
-      const res = await fetch("https://itfirm-8uc6.onrender.com/send-email", {
+      const res = await fetch("https://site2-livid-three.vercel.app/send-email", {
         method: "POST",
         body: payload,
       });

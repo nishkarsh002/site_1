@@ -24,7 +24,7 @@ const ContactUs = () => {
     const loadingToast = toast.loading("Sending...");
 
     try {
-      const res = await fetch("https://itfirm-8uc6.onrender.com/send-email", {
+      const res = await fetch("https://site2-livid-three.vercel.app/send-email", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

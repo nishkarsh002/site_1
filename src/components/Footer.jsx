@@ -155,7 +155,7 @@ const Footer = () => {
                       className="w-full h-20 object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-green-500/70 via-purple-500/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <span className="text-white text-xs font-semibold">View</span>
+                      {/* <span className="text-white text-xs font-semibold">View</span> */}
                     </div>
                   </div>
                 ))}

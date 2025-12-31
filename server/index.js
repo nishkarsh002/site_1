@@ -23,7 +23,7 @@ app.use(cors({
   },
   credentials: true
 }));
-
+// itssocialsk@gmail.com
 app.use(express.json());
 
 app.post("/send-email", upload.single("file"), async (req, res) => {
@@ -64,9 +64,9 @@ app.post("/send-email", upload.single("file"), async (req, res) => {
 
     // Prepare Resend API request
     const emailData = {
-      from: "onboarding@resend.dev",
-      to: "n79420953@gmail.com",
-      reply_to: email,
+      from: "onboarding@techhodu.dev",
+      to: "nishdixit0207@gmail.com",
+      // reply_to: email,
       subject: emailSubject,
       text: emailText,
       html: emailHtml,
