@@ -4,11 +4,21 @@ import CareerForm from "./CareerForm";
 
 export default function CareersSection() {
   const [showForm, setShowForm] = useState(null);
-  const [showInfo , setShowInfo] = useState(false);
+  const [showInfo, setShowInfo] = useState(null);
 
-  const handleOpen = (id) => setShowForm(id);
-  const handleClose = () => setShowForm(null);
- 
+  const handleOpen = (id) => {
+    setShowForm(id);
+    setShowInfo(null); // Close any open info when opening form
+  };
+  
+  const handleClose = () => {
+    setShowForm(null);
+  };
+
+  const handleToggleInfo = (id) => {
+    setShowInfo(showInfo === id ? null : id);
+    setShowForm(null); // Close any open form when opening info
+  };
 
   return (
     <>
@@ -16,7 +26,7 @@ export default function CareersSection() {
         <span className="inline-block bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold px-6 py-3 rounded-full shadow-lg text-sm uppercase tracking-wider mb-6">
           💼 Join Our Team
         </span>
-        <h2 className="text-4xl md:text-5xl font-black mb-6 text-gray-900">Launch Your Career at <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-purple-600">TechHodu</span></h2>
+        <h2 className="text-4xl md:text-5xl font-black mb-6 text-gray-900">Launch Your Career at <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-purple-600">TechVerse</span></h2>
         <p className="text-gray-700 text-xl max-w-3xl mx-auto leading-relaxed">
           We're seeking passionate engineers and tech innovators who want to create exceptional products and grow alongside industry leaders.
         </p>
@@ -57,17 +67,12 @@ export default function CareersSection() {
               </button>
               
               <button
-                onClick={() => setShowInfo(showInfo === role.id ? null: role.id)}
+                onClick={() => handleToggleInfo(role.id)}
                 className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-800 px-6 py-3 rounded-full font-semibold border-2 border-gray-300 hover:border-gray-400 transition-all duration-300"
               >
                 {showInfo === role.id ? "Hide" : "Details"}
               </button>
             </div>
-
-            {/* Apply Form */}
-            {showForm === role.id && (
-             <CareerForm isOpen={true} onClose={handleClose} role={role}/>
-            )}
 
             {showInfo === role.id && (
               <div className="mt-6 p-6 bg-gradient-to-br from-green-50 to-purple-50 border-l-4 border-green-500 rounded-2xl">
@@ -77,6 +82,15 @@ export default function CareersSection() {
           </div>
         ))}
       </div>
+
+      {/* Render form outside of cards to prevent flickering */}
+      {showForm && (
+        <CareerForm 
+          isOpen={true} 
+          onClose={handleClose} 
+          role={roles.find(role => role.id === showForm)}
+        />
+      )}
     </>
   );
 }

@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import toast from "react-hot-toast";
 
 export default function CareerForm({ isOpen, onClose, role }) {
   const [status, setStatus] = useState(false);
-  const [errors, setErrors] = useState({}); // store validation errors
+  const [errors, setErrors] = useState({});
 
   const [formData, setFormData] = useState({
     name: "",
@@ -23,7 +23,6 @@ export default function CareerForm({ isOpen, onClose, role }) {
     }
   };
 
-  // ✅ validation logic
   const validate = () => {
     let newErrors = {};
 
@@ -68,7 +67,7 @@ export default function CareerForm({ isOpen, onClose, role }) {
     }
 
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0; // ✅ true if no errors
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e) => {
@@ -90,7 +89,7 @@ export default function CareerForm({ isOpen, onClose, role }) {
     payload.append("file", formData.file);
 
     try {
-      const res = await fetch("https://site2-livid-three.vercel.app/send-email", {
+      const res = await fetch("https://site2-livid-three.vercel.app/api/send-email", {
         method: "POST",
         body: payload,
       });
@@ -105,7 +104,7 @@ export default function CareerForm({ isOpen, onClose, role }) {
           message: "",
         });
         setErrors({});
-        onClose(); // close modal
+        onClose();
       } else {
         toast.error("Failed to send application.");
       }
@@ -119,101 +118,132 @@ export default function CareerForm({ isOpen, onClose, role }) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm">
-      <div className="bg-white w-[90%] max-w-lg p-6 rounded-xl shadow-lg relative">
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 text-xl text-gray-600 hover:text-black"
-        >
-          &times;
-        </button>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+      <div className="bg-white w-full max-w-2xl rounded-3xl shadow-2xl relative max-h-[90vh] overflow-y-auto">
+        {/* Header */}
+        <div className="bg-gradient-to-r from-green-500 to-purple-600 p-6 rounded-t-3xl">
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center text-white text-xl font-bold transition-all duration-300"
+          >
+            ×
+          </button>
+          <h2 className="text-2xl md:text-3xl font-black text-white pr-12">
+            Apply for: {role?.title}
+          </h2>
+          <p className="text-white/90 mt-2">Join our innovative team and build the future</p>
+        </div>
 
-        <h2 className="text-xl font-semibold mb-4">
-          Apply for: {role?.title}
-        </h2>
+        {/* Form */}
+        <form className="p-6 md:p-8 space-y-6" onSubmit={handleSubmit}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
+                Full Name *
+              </label>
+              <input
+                type="text"
+                name="name"
+                placeholder="Your full name"
+                value={formData.name}
+                onChange={handleChange}
+                className="w-full border-2 border-gray-200 focus:border-green-500 px-4 py-3 rounded-xl transition-all duration-300 outline-none"
+                required
+              />
+              {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
+            </div>
 
-        <form className="space-y-4" onSubmit={handleSubmit}>
-          <div>
-            <input
-              type="text"
-              name="name"
-              placeholder="Your Name"
-              value={formData.name}
-              onChange={handleChange}
-              className="w-full border px-3 py-2 rounded"
-              required
-            />
-            {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
+                Email Address *
+              </label>
+              <input
+                type="email"
+                name="email"
+                placeholder="your@email.com"
+                value={formData.email}
+                onChange={handleChange}
+                className="w-full border-2 border-gray-200 focus:border-green-500 px-4 py-3 rounded-xl transition-all duration-300 outline-none"
+                required
+              />
+              {errors.email && (
+                <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+              )}
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
+                Phone Number *
+              </label>
+              <input
+                type="tel"
+                name="number"
+                placeholder="+1 (555) 000-0000"
+                value={formData.number}
+                onChange={handleChange}
+                className="w-full border-2 border-gray-200 focus:border-green-500 px-4 py-3 rounded-xl transition-all duration-300 outline-none"
+                required
+              />
+              {errors.number && (
+                <p className="text-red-500 text-sm mt-1">{errors.number}</p>
+              )}
+            </div>
+
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
+                Resume/CV *
+              </label>
+              <input
+                type="file"
+                name="file"
+                onChange={handleChange}
+                accept=".pdf,.doc,.docx"
+                className="w-full border-2 border-gray-200 focus:border-green-500 px-4 py-3 rounded-xl transition-all duration-300 outline-none file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100"
+                required
+              />
+              {errors.file && (
+                <p className="text-red-500 text-sm mt-1">{errors.file}</p>
+              )}
+            </div>
           </div>
 
           <div>
-            <input
-              type="email"
-              name="email"
-              placeholder="Your Email"
-              value={formData.email}
-              onChange={handleChange}
-              className="w-full border px-3 py-2 rounded"
-              required
-            />
-            {errors.email && (
-              <p className="text-red-500 text-sm">{errors.email}</p>
-            )}
-          </div>
-
-          <div>
-            <input
-              type="number"
-              name="number"
-              placeholder="Your Number"
-              value={formData.number}
-              onChange={handleChange}
-              className="w-full border px-3 py-2 rounded"
-              required
-            />
-            {errors.number && (
-              <p className="text-red-500 text-sm">{errors.number}</p>
-            )}
-          </div>
-
-          <div>
-            <input
-              type="file"
-              name="file"
-              onChange={handleChange}
-              className="w-full border px-3 py-2 rounded"
-              required
-            />
-            {errors.file && (
-              <p className="text-red-500 text-sm">{errors.file}</p>
-            )}
-          </div>
-
-          <div className="flex flex-col">
-            <label className="py-2 rounded font-semibold">
-              Why you're a good fit:
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
+              Why are you a good fit? (Optional)
             </label>
             <textarea
               name="message"
-              placeholder="Describe Yourself"
+              placeholder="Tell us about your experience, skills, and why you're excited about this role..."
               value={formData.message}
               onChange={handleChange}
-              className="w-full border px-3 py-2 rounded"
+              rows="4"
+              className="w-full border-2 border-gray-200 focus:border-green-500 px-4 py-3 rounded-xl transition-all duration-300 outline-none resize-none"
             />
             {errors.message && (
-              <p className="text-red-500 text-sm">{errors.message}</p>
+              <p className="text-red-500 text-sm mt-1">{errors.message}</p>
             )}
           </div>
 
-          <button
-            type="submit"
-            className={`w-full bg-blue-600 text-white py-2 rounded ${
-              status ? "cursor-not-allowed opacity-70" : "hover:bg-blue-700"
-            }`}
-            disabled={status}
-          >
-            {status ? "Sending..." : "Submit"}
-          </button>
+          <div className="flex gap-4 pt-4">
+            <button
+              type="button"
+              onClick={onClose}
+              className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-800 py-3 px-6 rounded-xl font-semibold transition-all duration-300"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              className={`flex-1 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white py-3 px-6 rounded-xl font-semibold shadow-lg hover:shadow-green-500/50 transition-all duration-300 transform hover:scale-105 ${
+                status ? "cursor-not-allowed opacity-70" : ""
+              }`}
+              disabled={status}
+            >
+              {status ? "Sending Application..." : "Submit Application"}
+            </button>
+          </div>
         </form>
       </div>
     </div>
