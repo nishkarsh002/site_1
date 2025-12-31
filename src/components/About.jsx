@@ -70,7 +70,7 @@ const About = () => {
           </div>
           <div>
             <p className="text-xs text-gray-500">24/7 Support</p>
-            <p className="text-sm font-bold text-gray-900">+91 72056 56169</p>
+            <p className="text-sm font-bold text-gray-900">+91 72630 25531</p>
           </div>
         </div>
       </div>

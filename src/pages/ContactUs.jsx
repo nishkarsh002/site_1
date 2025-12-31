@@ -88,9 +88,9 @@ const ContactUs = () => {
               <div>
                 <h4 className="font-bold text-xl mb-2 text-gray-900">Office Address</h4>
                 <p className="text-gray-700 leading-relaxed">
-                  Office FF 25, JTM Mall,<br />
-                  Model Town, Jagatpura, <br />
-                  Jaipur, Rajasthan  302017
+                  Near Sita Sundari Apartment,<br />
+                    Mahuabagh Road,<br />
+                    Patna, Bihar 801506
                 </p>
               </div>
             </div>
@@ -102,7 +102,7 @@ const ContactUs = () => {
               </div>
               <div>
                 <h4 className="font-bold text-xl mb-2 text-gray-900">Phone Number</h4>
-                <p className="text-gray-700 text-lg font-semibold">+91 72056 56169</p>
+                <p className="text-gray-700 text-lg font-semibold">+91 72630 25531</p>
               </div>
             </div>
 
@@ -113,7 +113,7 @@ const ContactUs = () => {
               </div>
               <div>
                 <h4 className="font-bold text-xl mb-2 text-gray-900">Email Address</h4>
-                <p className="text-gray-700 font-medium">info@appturetechnology.com</p>
+                <p className="text-gray-700 font-medium">support@techhodu.com</p>
               </div>
             </div>
           </div>

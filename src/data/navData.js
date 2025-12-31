@@ -81,23 +81,23 @@ export const servicesOffer = [
 ];
 
  export const testimonials = [
-      // {
-      //     name: "Mahindra Logistics",
-      //     // title: "Senior Developer",
-      //     feedback: "A reliable tech partner that truly understands business needs. From planning to deployment, everything was handled with precision.",
-      //     image: "/assets/client/cl1.webp", 
-      // },
       {
-          name: "Girnarsoft",
-          // title: "Project Manager",
-          feedback: "Great collaboration and timely execution. ITfirm’s development expertise helped us scale faster and improve performance across platforms.",
-          image: "/assets/client/cl2.webp",
+          name: "That's Beautifull Frame",
+          // title: "Senior Developer",
+          feedback: "A reliable tech partner that truly understands business needs. From planning to deployment, everything was handled with precision.",
+          image: "/assets/client/beautifull.jpg", 
       },
       {
-          name: "Medi Assist",
-          // title: "CTO, TechnoSoft",
+          name: "Khabar Taazgi",
+          // title: "Project Manager",
           feedback: "Great collaboration and timely execution. ITfirm’s development expertise helped us scale faster and improve performance across platforms.",
-          image: "/assets/client/cl3.webp",
+          image: "/assets/client/Khabar_tajgi.jpeg",
+      },
+      {
+          name: "Rama Collection Shop",
+          // title: "CTO, TechnoSoft",
+          feedback: "Excellent teamwork and on-schedule delivery. The IT firm’s technical expertise enabled rapid scaling and significantly enhanced performance across all digital platforms.",
+          image: "/assets/client/rama.jpg",
       },
   ];
 

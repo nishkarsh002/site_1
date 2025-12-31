@@ -78,7 +78,7 @@ const Footer = () => {
                 Quick Links
               </h4>
               <ul className="space-y-3">
-                {['Home', 'About', 'Services', 'Career', 'Contact'].map((link, idx) => (
+                {['Home', 'About', 'Services', 'Career', 'Contact Us'].map((link, idx) => (
                   <li key={idx}>
                     <Link to={`/${link.toLowerCase() === 'home' ? '' : link.toLowerCase().replace(' ', '_')}`} className="text-gray-400 hover:text-green-400 transition-colors flex items-center gap-2 group">
                       <span className="w-0 group-hover:w-2 h-0.5 bg-green-400 transition-all duration-300"></span>
@@ -101,7 +101,7 @@ const Footer = () => {
                     <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-green-500/20 to-emerald-500/20 flex items-center justify-center group-hover:scale-110 transition-transform border border-green-500/30">
                       <FaPhoneAlt className="text-green-400 text-sm" />
                     </div>
-                    <span className="text-sm">0 (141) 2729706</span>
+                    <span className="text-sm">72630 25531</span>
                   </a>
                 </li>
                 <li className="group">
@@ -117,9 +117,9 @@ const Footer = () => {
                     <span className="text-blue-400">📍</span>
                   </div>
                   <span className="text-sm leading-relaxed">
-                    Office FF 25, JTM Mall,<br />
-                    Model Town, Jagatpura,<br />
-                    Jaipur, Rajasthan 302017
+                    Near Sita Sundari Apartment,<br />
+                    Mahuabagh Road,<br />
+                    Patna, Bihar 801506
                   </span>
                 </li>
               </ul>
