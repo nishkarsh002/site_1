@@ -44,8 +44,8 @@ export default async function handler(req, res) {
     const isCareer = Boolean(role);
 
     await resend.emails.send({
-      from: "TechHodu <onboarding@resend.dev>",
-      to: "nishdixit0207@gmail.com",
+    from: "TechHodu <onboarding@resend.dev>",
+    to: "n79420953@gmail.com",
       subject: isCareer
         ? `New Application for ${role}`
         : `New Message from Contact Form: ${subject}`,
