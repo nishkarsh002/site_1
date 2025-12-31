@@ -1,9 +1,11 @@
 import { Resend } from "resend";
 import busboy from "busboy";
 
+export const runtime = "nodejs";
+
 export const config = {
   api: {
-    bodyParser: false, // required for file uploads
+    bodyParser: false,
   },
 };
 
@@ -16,77 +18,51 @@ export default async function handler(req, res) {
 
   try {
     const { fields, file } = await parseForm(req);
-
     const { name, email, number, message, role, subject } = fields;
 
-    let emailSubject = "";
-    let emailText = "";
-    let emailHtml = "";
-
-    // 💼 Career form
-    if (role) {
-      emailSubject = `New Application for ${role}`;
-      emailText = `Email: ${email}
-Name: ${name}
-Phone: ${number}
-Applied Role: ${role}
-Message: ${message || "No message"}`;
-
-      emailHtml = `
-        <h2>New Job Application</h2>
-        <p><strong>Role:</strong> ${role}</p>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${number || "Not provided"}</p>
-        <p><strong>Message:</strong> ${message || "No message"}</p>
-        ${file ? `<p><strong>Resume:</strong> Attached</p>` : ""}
-      `;
-    } 
-    // 📩 Contact form
-    else {
-      emailSubject = `New Message from Contact Form: ${subject}`;
-      emailText = `Email: ${email}
-Name: ${name}
-Phone: ${number}
-Subject: ${subject}
-Message: ${message}`;
-
-      emailHtml = `
-        <h2>New Contact Form Message</h2>
-        <p><strong>Subject:</strong> ${subject}</p>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${number}</p>
-        <p><strong>Message:</strong> ${message}</p>
-      `;
+    if (!name || !email) {
+      return res.status(400).json({ message: "Missing required fields" });
     }
 
-    const attachments = [];
-
-    if (file) {
-      attachments.push({
-        filename: file.filename,
-        content: file.content, // base64
-      });
-    }
+    const isCareer = Boolean(role);
 
     await resend.emails.send({
       from: "onboarding@techhodu.dev",
       to: "nishdixit0207@gmail.com",
-      subject: emailSubject,
-      text: emailText,
-      html: emailHtml,
-      attachments,
+      subject: isCareer
+        ? `New Application for ${role}`
+        : `New Message from Contact Form: ${subject}`,
+      html: isCareer
+        ? `
+          <h2>New Job Application</h2>
+          <p><b>Role:</b> ${role}</p>
+          <p><b>Name:</b> ${name}</p>
+          <p><b>Email:</b> ${email}</p>
+          <p><b>Phone:</b> ${number || "Not provided"}</p>
+          <p><b>Message:</b> ${message || "No message"}</p>
+        `
+        : `
+          <h2>New Contact Form Message</h2>
+          <p><b>Subject:</b> ${subject}</p>
+          <p><b>Name:</b> ${name}</p>
+          <p><b>Email:</b> ${email}</p>
+          <p><b>Phone:</b> ${number}</p>
+          <p><b>Message:</b> ${message}</p>
+        `,
+      attachments: file
+        ? [
+            {
+              filename: file.filename,
+              content: file.content,
+            },
+          ]
+        : [],
     });
 
     return res.status(200).json({ message: "Email sent successfully" });
-
   } catch (error) {
-    console.error(error);
-    return res.status(500).json({
-      message: "Error sending email",
-      error: error.message,
-    });
+    console.error("SEND EMAIL ERROR:", error);
+    return res.status(500).json({ message: error.message });
   }
 }
 
@@ -95,7 +71,6 @@ Message: ${message}`;
 function parseForm(req) {
   return new Promise((resolve, reject) => {
     const bb = busboy({ headers: req.headers });
-
     const fields = {};
     let fileData = null;
 
@@ -104,10 +79,10 @@ function parseForm(req) {
     });
 
     bb.on("file", (name, stream, info) => {
+      if (!info.filename) return;
+
       const chunks = [];
-
-      stream.on("data", (chunk) => chunks.push(chunk));
-
+      stream.on("data", chunk => chunks.push(chunk));
       stream.on("end", () => {
         fileData = {
           filename: info.filename,
@@ -116,12 +91,9 @@ function parseForm(req) {
       });
     });
 
-    bb.on("finish", () => {
-      resolve({ fields, file: fileData });
-    });
-
+    bb.on("finish", () => resolve({ fields, file: fileData }));
     bb.on("error", reject);
 
-    req.pipe(busboy);
+    req.pipe(bb); // ✅ FIXED
   });
 }
