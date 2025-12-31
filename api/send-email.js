@@ -1,5 +1,5 @@
 import { Resend } from "resend";
-import Busboy from "busboy";
+import busboy from "busboy";
 
 export const config = {
   api: {
@@ -94,16 +94,16 @@ Message: ${message}`;
 
 function parseForm(req) {
   return new Promise((resolve, reject) => {
-    const busboy = new Busboy({ headers: req.headers });
+    const bb = busboy({ headers: req.headers });
 
     const fields = {};
     let fileData = null;
 
-    busboy.on("field", (name, value) => {
+    bb.on("field", (name, value) => {
       fields[name] = value;
     });
 
-    busboy.on("file", (name, stream, info) => {
+    bb.on("file", (name, stream, info) => {
       const chunks = [];
 
       stream.on("data", (chunk) => chunks.push(chunk));
@@ -116,11 +116,11 @@ function parseForm(req) {
       });
     });
 
-    busboy.on("finish", () => {
+    bb.on("finish", () => {
       resolve({ fields, file: fileData });
     });
 
-    busboy.on("error", reject);
+    bb.on("error", reject);
 
     req.pipe(busboy);
   });
