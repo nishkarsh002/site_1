@@ -17,7 +17,24 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { fields, file } = await parseForm(req);
+    // Check content type and parse accordingly
+    const contentType = req.headers['content-type'] || '';
+    let fields = {};
+    let file = null;
+
+    if (contentType.includes('application/json')) {
+      // Handle JSON data (Contact form)
+      const body = await parseJSON(req);
+      fields = body;
+    } else if (contentType.includes('multipart/form-data')) {
+      // Handle FormData (Career form with file upload)
+      const parsed = await parseForm(req);
+      fields = parsed.fields;
+      file = parsed.file;
+    } else {
+      return res.status(400).json({ message: "Unsupported content type" });
+    }
+
     const { name, email, number, message, role, subject } = fields;
 
     if (!name || !email) {
@@ -68,6 +85,23 @@ export default async function handler(req, res) {
 
 /* ---------------- HELPERS ---------------- */
 
+function parseJSON(req) {
+  return new Promise((resolve, reject) => {
+    let body = '';
+    req.on('data', chunk => {
+      body += chunk.toString();
+    });
+    req.on('end', () => {
+      try {
+        resolve(JSON.parse(body));
+      } catch (error) {
+        reject(error);
+      }
+    });
+    req.on('error', reject);
+  });
+}
+
 function parseForm(req) {
   return new Promise((resolve, reject) => {
     const bb = busboy({ headers: req.headers });
@@ -94,6 +128,6 @@ function parseForm(req) {
     bb.on("finish", () => resolve({ fields, file: fileData }));
     bb.on("error", reject);
 
-    req.pipe(bb); // ✅ FIXED
+    req.pipe(bb);
   });
 }
