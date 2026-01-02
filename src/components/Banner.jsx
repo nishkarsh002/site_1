@@ -10,7 +10,7 @@ const Banner = () => {
     <div
       className="relative bg-cover bg-center bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900"
       style={{
-        backgroundImage: 'linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%), url("../assets/test/banner_test.jpg")',
+        backgroundImage: 'linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%), url("../assets/test/banner_test.png")',
         minHeight: "90vh",
         backgroundBlendMode: "overlay",
       }}
@@ -26,10 +26,15 @@ const Banner = () => {
 
           <h2 className="text-5xl md:text-7xl font-black leading-tight tracking-tight mb-8 drop-shadow-2xl">
             Transform Your Digital <br className="hidden md:block" /> 
-            <span className="gradient-text">Vision Into Reality</span>
+            <span className="bg-gradient-to-r from-emerald-300 via-cyan-300 to-blue-400 
+             bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(0,255,200,0.35)]">
+              Vision Into Reality
+            </span>
+
           </h2>
 
-          <p className="text-base md:text-xl font-light leading-relaxed text-gray-300 max-w-2xl mb-8">
+          <p className="text-base md:text-xl font-normal leading-relaxed 
+             text-slate-200 drop-shadow-sm max-w-2xl mb-8">
             Empowering businesses with cutting-edge technology solutions. We craft exceptional digital experiences that drive growth and innovation in the modern era.
           </p>
 

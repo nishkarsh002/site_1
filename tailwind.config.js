@@ -1,5 +1,6 @@
 import scrollbar from 'tailwind-scrollbar';
 import scrollbarHide from 'tailwind-scrollbar-hide';
+import typography from '@tailwindcss/typography';
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -15,8 +16,12 @@ export default {
         secondary: '#8b5cf6',
         accent: '#f59e0b',
         dark: '#1f2937',
-      }
+      },
     },
   },
-  plugins: [scrollbarHide, scrollbar],
+  plugins: [
+    scrollbarHide,
+    scrollbar,
+    typography,
+  ],
 };

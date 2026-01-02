@@ -56,7 +56,7 @@ export default async function handler(req, res) {
 
     await resend.emails.send({
     from: "TechHodu <onboarding@resend.dev>",
-    to: "n79420953@gmail.com",
+    to: "itssocialsk@gmail.com",
       subject: isCareer
         ? `New Application for ${role}`
         : `New Message from Contact Form: ${subject}`,

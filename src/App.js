@@ -4,9 +4,11 @@ import AboutUs from "./pages/AboutUs";
 import Services from "./pages/Services";
 import Career from "./pages/Career";
 import ContactUs from "./pages/ContactUs";
+import Blogs from "./pages/Blogs";
+import BlogPost from "./components/BlogPost";
 import ScrollTop from "./components/ScrollTop";
 
-import { Toaster } from "react-hot-toast"; // ✅ import Toaster
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
         <Route path="/services" element={<Services />} />
         <Route path="/career" element={<Career />} />
         <Route path="/contact_us" element={<ContactUs />} />
+        <Route path="/blogs" element={<Blogs />} />
+        <Route path="/blog/:slug" element={<BlogPost />} />
       </Routes>
 
       <Toaster
