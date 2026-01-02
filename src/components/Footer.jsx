@@ -105,7 +105,7 @@ const Footer = () => {
                   </a>
                 </li>
                 <li className="group">
-                  <a href="mailto:info@mileazo.com" className="flex items-center gap-3 text-gray-400 hover:text-green-400 transition-colors">
+                  <a href="mailto:itssocialsk@gmail.com" className="flex items-center gap-3 text-gray-400 hover:text-green-400 transition-colors">
                     <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500/20 to-violet-500/20 flex items-center justify-center group-hover:scale-110 transition-transform border border-purple-500/30">
                       <FaEnvelope className="text-purple-400 text-sm" />
                     </div>
