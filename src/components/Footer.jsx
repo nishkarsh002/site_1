@@ -109,7 +109,7 @@ const Footer = () => {
                     <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500/20 to-violet-500/20 flex items-center justify-center group-hover:scale-110 transition-transform border border-purple-500/30">
                       <FaEnvelope className="text-purple-400 text-sm" />
                     </div>
-                    <span className="text-sm">support@techhodu.com</span>
+                    <span className="text-sm">itssocialsk@gmail.com</span>
                   </a>
                 </li>
                 <li className="flex items-start gap-3 text-gray-400">

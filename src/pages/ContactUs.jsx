@@ -113,7 +113,7 @@ const ContactUs = () => {
               </div>
               <div>
                 <h4 className="font-bold text-xl mb-2 text-gray-900">Email Address</h4>
-                <p className="text-gray-700 font-medium">support@techhodu.com</p>
+                <p className="text-gray-700 font-medium">itssocialsk@gmail.com</p>
               </div>
             </div>
           </div>
