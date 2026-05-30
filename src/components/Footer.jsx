@@ -3,6 +3,7 @@ import {
   FaFacebookF,
   FaInstagram,
   FaLinkedin,
+  FaYoutube,
   FaPhoneAlt,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -105,11 +106,11 @@ const Footer = () => {
                   </a>
                 </li>
                 <li className="group">
-                  <a href="mailto:itssocialsk@gmail.com" className="flex items-center gap-3 text-gray-400 hover:text-green-400 transition-colors">
+                  <a href="mailto:techhoduofficial@gmail.com" className="flex items-center gap-3 text-gray-400 hover:text-green-400 transition-colors">
                     <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500/20 to-violet-500/20 flex items-center justify-center group-hover:scale-110 transition-transform border border-purple-500/30">
                       <FaEnvelope className="text-purple-400 text-sm" />
                     </div>
-                    <span className="text-sm">itssocialsk@gmail.com</span>
+                    <span className="text-sm">techhoduofficial@gmail.com</span>
                   </a>
                 </li>
                 <li className="flex items-start gap-3 text-gray-400">
@@ -140,8 +141,8 @@ const Footer = () => {
                 <a href="/" target="_blank" rel="noopener noreferrer" className="w-11 h-11 rounded-xl bg-gradient-to-br from-blue-400/20 to-blue-500/20 hover:from-blue-400 hover:to-blue-500 flex items-center justify-center transition-all duration-300 transform hover:scale-110 border border-blue-400/30 hover:border-transparent">
                   <FaLinkedin className="text-lg" />
                 </a>
-                <a href="/" target="_blank" rel="noopener noreferrer" className="w-11 h-11 rounded-xl bg-gradient-to-br from-pink-500/20 to-purple-500/20 hover:from-pink-500 hover:to-purple-500 flex items-center justify-center transition-all duration-300 transform hover:scale-110 border border-pink-500/30 hover:border-transparent">
-                  <FaInstagram className="text-lg" />
+                <a href="https://www.youtube.com/@techhoduofficial" target="_blank" rel="noopener noreferrer" className="w-11 h-11 rounded-xl bg-gradient-to-br from-pink-500/20 to-purple-500/20 hover:from-pink-500 hover:to-purple-500 flex items-center justify-center transition-all duration-300 transform hover:scale-110 border border-pink-500/30 hover:border-transparent">
+                  <FaYoutube className="text-lg" />
                 </a>
               </div>
 
@@ -152,11 +153,11 @@ const Footer = () => {
                     <img
                       src={`assets/Icon/${img}.jpg`}
                       alt={`gallery-${img}`}
-                      className="w-full h-20 object-cover group-hover:scale-110 transition-transform duration-500"
+                      className="w-full h-16 object-cover group-hover:scale-110 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-green-500/70 via-purple-500/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      {/* <span className="text-white text-xs font-semibold">View</span> */}
-                    </div>
+                    {/* <div className="absolute inset-0 bg-gradient-to-t from-green-500/70 via-purple-500/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <span className="text-white text-xs font-semibold">View</span>
+                    </div> */}
                   </div>
                 ))}
               </div>      

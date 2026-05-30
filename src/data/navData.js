@@ -103,6 +103,11 @@ export const servicesOffer = [
           feedback: "Excellent teamwork and on-schedule delivery. The IT firm’s technical expertise enabled rapid scaling and significantly enhanced performance across all digital platforms.",
           image: "/assets/client/rama.jpg",
       },
+      {
+        name: "PowerFiling",
+        feedback: "Excellent teamwork and on-schedule delivery. The team's technical expertise enabled the successful development of a streamlining the filing process and significantly improving user experience and overall system performance.",
+        image: "/assets/client/power.png"
+      }
   ];
 
 export const slides = [
