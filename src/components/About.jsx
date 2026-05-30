@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const About = () => {
   return (
-    <div className="pt-10 pb-12 sm:pt-14 sm:pb-16 bg-gradient-to-b from-gray-50 to-white">
+    <div className="pt-10 pb-12 sm:pt-14 sm:bg-gradient-to-b from-gray-50 to-white">
   <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
     {/* Image */}

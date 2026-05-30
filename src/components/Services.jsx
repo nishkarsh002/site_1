@@ -4,7 +4,7 @@ import { servicesOffer } from "../data/navData";
 
 const Service = () => {
     return (
-        <div className="relative pt-24 pb-16 bg-gradient-to-b from-white to-gray-100">
+        <div className="relative pt-8 pb-8 bg-gradient-to-b from-white to-gray-100">
             <div className="container mx-auto px-4">
                 {/* Header */}
                 <div className="text-center mb-16 max-w-4xl mx-auto">

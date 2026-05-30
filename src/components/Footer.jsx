@@ -171,7 +171,7 @@ const Footer = () => {
               <h3 className="text-lg font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-purple-500 to-blue-500 hover:from-green-300 hover:via-purple-400 hover:to-blue-400 transition-all duration-300 cursor-pointer">
                 ⚡ Powered by <span className="text-2xl">TechHodu</span> ⚡
               </h3>
-              <p className="text-xs text-gray-600 mt-1">Building Tomorrow's Digital Solutions</p>
+              <p className="text-xs text-gray-600 mt-1">MSME Registered | UDYAM-BR-26-0169760</p>
             </div>
           </div>
 
