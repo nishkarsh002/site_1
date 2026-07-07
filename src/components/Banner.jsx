@@ -1,130 +1,164 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { services } from "../data/navData";
-import Marquee from "react-fast-marquee";
+import useReveal from "../hooks/useReveal";
 
-
+const WORDS = ["Web Apps", "Mobile Apps", "SaaS Products", "Digital Brands"];
 
 const Banner = () => {
+  useReveal();
+  const [wordIndex, setWordIndex] = useState(0);
+  const [displayed, setDisplayed] = useState("");
+  const [deleting, setDeleting] = useState(false);
+
+  /* ── Typewriter effect ── */
+  useEffect(() => {
+    const word = WORDS[wordIndex];
+    let timeout;
+
+    if (!deleting && displayed.length < word.length) {
+      timeout = setTimeout(() => setDisplayed(word.slice(0, displayed.length + 1)), 90);
+    } else if (!deleting && displayed.length === word.length) {
+      timeout = setTimeout(() => setDeleting(true), 1800);
+    } else if (deleting && displayed.length > 0) {
+      timeout = setTimeout(() => setDisplayed(word.slice(0, displayed.length - 1)), 50);
+    } else if (deleting && displayed.length === 0) {
+      setDeleting(false);
+      setWordIndex((i) => (i + 1) % WORDS.length);
+    }
+
+    return () => clearTimeout(timeout);
+  }, [displayed, deleting, wordIndex]);
+
   return (
     <>
-    <div
-      className="relative bg-cover bg-center bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900"
-      style={{
-        backgroundImage: 'linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%), url("../assets/test/banner_test.png")',
-        minHeight: "90vh",
-        backgroundBlendMode: "overlay",
-      }}
-    >
-      {/* Text Content */}
-      <div className="container mx-auto px-4 py-20 flex flex-col justify-center min-h-[90vh]">
-        <div className="max-w-3xl text-white slide-in">
-          <div className="inline-block mb-4 px-4 py-2 bg-green-500/20 border border-green-400/30 rounded-full backdrop-blur-sm">
-            <h6 className="text-xs md:text-sm font-semibold tracking-widest uppercase text-green-300">
-              ✨ Innovation Meets Excellence
-            </h6>
-          </div>
+      {/* ── HERO ── */}
+      <div
+        className="relative overflow-hidden bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950"
+        style={{ minHeight: "88vh" }}
+      >
+        {/* Background image overlay */}
+        <div
+          className="absolute inset-0 opacity-10"
+          style={{
+            backgroundImage: 'url("../assets/test/banner_test.png")',
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        />
 
-          <h2 className="text-5xl md:text-7xl font-black leading-tight tracking-tight mb-8 drop-shadow-2xl">
-            Transform Your Digital <br className="hidden md:block" /> 
-            <span className="bg-gradient-to-r from-emerald-300 via-cyan-300 to-blue-400 
-             bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(0,255,200,0.35)]">
-              Vision Into Reality
-            </span>
+        {/* Radial glow blobs */}
+        <div className="absolute top-1/3 left-1/4 w-72 h-72 bg-green-500/20 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/3 right-1/4 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }} />
+        <div className="absolute top-1/2 right-1/3 w-48 h-48 bg-cyan-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "2s" }} />
 
-          </h2>
+        {/* CSS particles */}
+        <div className="particle p1" /><div className="particle p2" /><div className="particle p3" />
+        <div className="particle p4" /><div className="particle p5" /><div className="particle p6" />
+        <div className="particle p7" /><div className="particle p8" />
 
-          <p className="text-base md:text-xl font-normal leading-relaxed 
-             text-slate-200 drop-shadow-sm max-w-2xl mb-8">
-            Empowering businesses with cutting-edge technology solutions. We craft exceptional digital experiences that drive growth and innovation in the modern era.
-          </p>
+        {/* Content */}
+        <div className="relative z-10 container mx-auto px-6 flex flex-col justify-center min-h-[88vh] max-w-6xl">
+          <div className="max-w-3xl py-16">
 
-          <div className="flex gap-4 flex-wrap">
-            <Link to="/contact_us">
-              <button className="px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-semibold rounded-full shadow-lg hover:shadow-green-500/50 transition-all duration-300 transform hover:scale-105">
-                Get Started →
-              </button>
-            </Link>
-            <Link to="/services">
-              <button className="px-8 py-4 bg-white/10 backdrop-blur-sm border-2 border-white/30 hover:bg-white/20 text-white font-semibold rounded-full transition-all duration-300">
-                Explore Services
-              </button>
-            </Link>
-          </div>
-        </div>
-      </div>
-    </div>
+            {/* Badge */}
+            <div className="reveal inline-flex items-center gap-2 mb-5 px-4 py-2 bg-green-500/10 border border-green-400/25 rounded-full backdrop-blur-sm">
+              <span className="w-2 h-2 rounded-full bg-green-400 animate-ping" />
+              <span className="text-green-300 text-xs font-semibold tracking-widest uppercase">
+                Innovation Meets Excellence
+              </span>
+            </div>
 
-    {/* Services Cards Section - Separate from hero */}
-    <div className="bg-gradient-to-b from-gray-900 to-gray-800 py-16">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <span className="inline-block bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold px-6 py-3 rounded-full shadow-lg text-sm uppercase tracking-wider mb-4">
-            🚀 Our Expertise
-          </span>
-          <h3 className="text-3xl md:text-4xl font-black text-white mb-2">
-            What We <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-purple-500">Specialize In</span>
-          </h3>
-        </div>
-        
-        <Link to="/services">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 md:gap-6">
-            {services.map((service, index) => (
-              <div
-                key={index}
-                className="relative bg-gradient-to-br from-gray-800 to-gray-900 text-center group overflow-hidden rounded-2xl border-2 border-green-500/30 hover:border-green-400 transition-all duration-300 shadow-xl hover:shadow-green-500/50 transform hover:scale-105"
-              >
-                <span className="absolute inset-0 bg-gradient-to-r from-green-500 to-purple-600 opacity-0 group-hover:opacity-20 transition-opacity duration-300 z-10" />
-                <div className="relative z-20 p-6 md:p-8 flex flex-col items-center">
-                  <div className="w-14 h-14 md:w-16 md:h-16 mb-3 md:mb-4 bg-gradient-to-br from-green-500/20 to-purple-500/20 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-green-500/30">
-                    <img
-                      src={service.icon}
-                      alt={service.title}
-                      className="w-8 h-8 md:w-10 md:h-10"
-                    />
-                  </div>
-                  <h5 className="font-semibold text-sm md:text-base text-gray-200 group-hover:text-green-300 transition text-center break-words leading-tight">
-                    {service.title}
-                  </h5>
+            {/* Headline — all on one line flow */}
+            <div className="mb-6 space-y-1">
+              <h1 className="reveal delay-100 text-5xl md:text-6xl lg:text-7xl font-black leading-none text-white">
+                We Build
+              </h1>
+              <h1 className="reveal delay-200 text-5xl md:text-6xl lg:text-7xl font-black leading-none">
+                <span className="animated-gradient-text typing-cursor">{displayed}</span>
+              </h1>
+              <h1 className="reveal delay-300 text-5xl md:text-6xl lg:text-7xl font-black leading-none text-white">
+                That <span className="animated-gradient-text">Scale.</span>
+              </h1>
+            </div>
+
+            {/* Sub */}
+            <p className="reveal delay-400 text-gray-400 text-base md:text-lg leading-relaxed max-w-xl mb-8">
+              Empowering businesses with cutting-edge technology. We craft exceptional digital
+              experiences that drive growth and innovation.
+            </p>
+
+            {/* CTAs */}
+            <div className="reveal delay-500 flex flex-wrap gap-3">
+              <Link to="/contact_us">
+                <button className="group relative overflow-hidden px-7 py-3.5 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold rounded-full shadow-lg shadow-green-500/30 hover:shadow-green-500/60 transition-all duration-300 transform hover:scale-105 text-sm">
+                  <span className="relative z-10">Get Started →</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-green-500 translate-x-full group-hover:translate-x-0 transition-transform duration-300" />
+                </button>
+              </Link>
+              <Link to="/services">
+                <button className="px-7 py-3.5 bg-white/5 backdrop-blur-sm border border-white/20 hover:bg-white/10 hover:border-white/40 text-white font-semibold rounded-full transition-all duration-300 text-sm">
+                  Explore Services ↗
+                </button>
+              </Link>
+            </div>
+
+            {/* Stats row */}
+            <div className="reveal delay-500 flex flex-wrap gap-6 mt-10 pt-8 border-t border-white/10">
+              {[
+                { value: "150+", label: "Projects" },
+                { value: "98%",  label: "Satisfaction" },
+                { value: "5+",   label: "Years" },
+                { value: "24/7", label: "Support" },
+              ].map((s, i) => (
+                <div key={i}>
+                  <p className="text-2xl font-black animated-gradient-text">{s.value}</p>
+                  <p className="text-gray-500 text-xs mt-0.5">{s.label}</p>
                 </div>
-              </div>
-            ))}
-          </div>
-        </Link>
-      </div>
-    </div>
-
-    {/* Client Marquee Section - Separate with proper spacing */}
-    {/* <div className="bg-gradient-to-b from-gray-800 to-gray-900 py-16">
-      <div className="container mx-auto px-4">
-        <div className="bg-gradient-to-r from-gray-800/80 to-gray-900/80 backdrop-blur-sm rounded-3xl p-8 md:p-12 border-2 border-green-500/20 shadow-2xl">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-            Left: Text Section
-            <div className="md:w-2/5 text-center md:text-left">
-              <h3 className="text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-purple-500 mb-3">
-                Trusted by Industry Leaders
-              </h3>
-              <p className="text-gray-400 text-base">Delivering excellence across the globe</p>
-            </div>
-
-            Right: Marquee Section
-            <div className="md:w-3/5 w-full">
-              <Marquee gradient={false} speed={50}>
-                {[
-                  "assets/client/cl2.webp",
-                  "assets/client/cl3.webp",
-                  "assets/client/cl2.webp",
-                  "assets/client/cl3.webp",
-                ].map((src, index) => (
-                  <div key={index} className="mx-6 md:mx-8 bg-white/10 p-4 md:p-5 rounded-2xl backdrop-blur-sm hover:bg-white/20 transition-all border border-white/10 hover:border-green-400/50">
-                    <img src={src} alt="client-logo" className="h-10 md:h-12 w-auto opacity-80 hover:opacity-100 transition-opacity" />
-                  </div>
-                ))}
-              </Marquee>
+              ))}
             </div>
           </div>
         </div>
+
+        {/* Bottom fade */}
+        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-gray-900 to-transparent" />
       </div>
-    </div> */}
+
+      {/* ── EXPERTISE CARDS ── */}
+      <div className="bg-gradient-to-b from-gray-900 to-gray-950 py-14">
+        <div className="container mx-auto px-6 max-w-7xl">
+
+          <div className="reveal text-center mb-10">
+            <span className="inline-block bg-gradient-to-r from-green-500/20 to-purple-500/20 border border-green-500/30 text-green-300 font-bold px-5 py-2 rounded-full text-xs uppercase tracking-wider mb-3">
+              🚀 Our Expertise
+            </span>
+            <h2 className="text-3xl md:text-4xl font-black text-white">
+              What We <span className="animated-gradient-text">Specialize In</span>
+            </h2>
+          </div>
+
+          <Link to="/services">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+              {services.map((service, index) => (
+                <div
+                  key={index}
+                  className={`reveal delay-${(index + 1) * 100} tilt-card relative bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm text-center group rounded-2xl border border-white/5 hover:border-green-400/50 transition-all duration-300 overflow-hidden cursor-pointer`}
+                >
+                  <div className="absolute top-0 left-0 right-0 h-0.5 animated-border opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="p-5 flex flex-col items-center">
+                    <div className="w-12 h-12 mb-3 rounded-xl bg-gradient-to-br from-green-500/10 to-purple-500/10 border border-green-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <img src={service.icon} alt={service.title} className="w-7 h-7" />
+                    </div>
+                    <h5 className="font-semibold text-xs md:text-sm text-gray-300 group-hover:text-green-300 transition-colors text-center leading-tight">
+                      {service.title}
+                    </h5>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Link>
+        </div>
+      </div>
     </>
   );
 };

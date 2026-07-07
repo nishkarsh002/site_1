@@ -20,8 +20,8 @@ const Navbar = () => {
   return (
     <div className="w-full">
 
-      <nav className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 shadow-xl relative z-30 border-b border-green-500/20">
-        <div className="container mx-auto px-6 py-1 flex justify-between items-center">
+      <nav className="bg-gray-950/95 backdrop-blur-md shadow-xl relative z-30 border-b border-green-500/20 sticky top-0">
+        <div className="container mx-auto px-6 py-3 flex justify-between items-center">
 
             <Link to="/" className="flex items-center gap-3 group">
               <img src="../assets/img/logo.png" alt="Logo" className="h-auto w-24 md:w-32 lg:w-36 group-hover:scale-110 transition-transform duration-300" />

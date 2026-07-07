@@ -75,3 +75,136 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
+/* ── Scroll reveal ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.reveal-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ── Stagger delay helpers ── */
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
+.delay-300 { transition-delay: 0.3s; }
+.delay-400 { transition-delay: 0.4s; }
+.delay-500 { transition-delay: 0.5s; }
+
+/* ── Animated gradient border ── */
+@keyframes borderSpin {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.animated-border {
+  background: linear-gradient(270deg, #10b981, #8b5cf6, #06b6d4, #10b981);
+  background-size: 400% 400%;
+  animation: borderSpin 4s ease infinite;
+}
+
+/* ── Glowing pulse ── */
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(16,185,129,0.4); }
+  50%       { box-shadow: 0 0 40px rgba(16,185,129,0.8), 0 0 60px rgba(139,92,246,0.4); }
+}
+.glow-pulse { animation: glowPulse 3s ease-in-out infinite; }
+
+/* ── Typing cursor blink ── */
+@keyframes blink {
+  0%, 100% { border-color: transparent; }
+  50%       { border-color: #10b981; }
+}
+.typing-cursor {
+  border-right: 3px solid #10b981;
+  animation: blink 1s step-end infinite;
+  padding-right: 4px;
+}
+
+/* ── Number counter roll ── */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.count-anim { animation: countUp 0.6s ease forwards; }
+
+/* ── Shimmer skeleton ── */
+@keyframes shimmer {
+  0%   { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+.shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite linear;
+}
+
+/* ── Smooth card tilt on hover ── */
+.tilt-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform-style: preserve-3d;
+}
+.tilt-card:hover {
+  transform: perspective(1000px) rotateX(-4deg) rotateY(4deg) scale(1.03);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+}
+
+/* ── Hero particle dots (pure CSS) ── */
+@keyframes drift {
+  0%         { transform: translateY(0px) translateX(0px) scale(1); opacity: 0.6; }
+  33%        { transform: translateY(-30px) translateX(15px) scale(1.1); opacity: 1; }
+  66%        { transform: translateY(-10px) translateX(-10px) scale(0.9); opacity: 0.7; }
+  100%       { transform: translateY(0px) translateX(0px) scale(1); opacity: 0.6; }
+}
+.particle { position: absolute; border-radius: 50%; animation: drift linear infinite; pointer-events: none; }
+.p1  { width:6px;  height:6px;  background:#10b981; top:15%; left:10%; animation-duration:6s; }
+.p2  { width:10px; height:10px; background:#8b5cf6; top:25%; left:80%; animation-duration:9s; animation-delay:-2s; }
+.p3  { width:4px;  height:4px;  background:#06b6d4; top:70%; left:20%; animation-duration:7s; animation-delay:-4s; }
+.p4  { width:8px;  height:8px;  background:#f59e0b; top:50%; left:70%; animation-duration:11s; animation-delay:-1s; }
+.p5  { width:5px;  height:5px;  background:#10b981; top:80%; left:50%; animation-duration:8s; animation-delay:-3s; }
+.p6  { width:12px; height:12px; background:#8b5cf6; top:10%; left:50%; animation-duration:13s; animation-delay:-5s; opacity:0.3; }
+.p7  { width:4px;  height:4px;  background:#06b6d4; top:40%; left:35%; animation-duration:10s; animation-delay:-6s; }
+.p8  { width:7px;  height:7px;  background:#10b981; top:60%; left:90%; animation-duration:12s; animation-delay:-8s; }
+
+/* ── Gradient text animation ── */
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.animated-gradient-text {
+  background: linear-gradient(270deg, #10b981, #8b5cf6, #06b6d4, #f59e0b, #10b981);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 5s ease infinite;
+}
+
+/* ── Stats number flip ── */
+@keyframes flipIn {
+  from { transform: rotateX(-90deg); opacity: 0; }
+  to   { transform: rotateX(0deg);   opacity: 1; }
+}
+.flip-in { animation: flipIn 0.5s ease forwards; }
