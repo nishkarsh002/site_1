@@ -151,7 +151,7 @@ const Footer = () => {
                 {[4, 5, 6, 8].map((img, idx) => (
                   <div key={idx} className="relative group overflow-hidden rounded-xl border-2 border-gray-800 hover:border-green-500/50 transition-all">
                     <img
-                      src={`assets/Icon/${img}.jpg`}
+                      src={`/assets/Icon/${img}.jpg`}
                       alt={`gallery-${img}`}
                       className="w-full h-16 object-cover group-hover:scale-110 transition-transform duration-500"
                     />
