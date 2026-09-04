@@ -1,7 +1,7 @@
 // @ts-nocheck
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
@@ -10,6 +10,8 @@ import { Mousewheel, Scrollbar } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/scrollbar';
 export default function Page() {
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
     useEffect(() => {
         let timer: NodeJS.Timeout | null = null;
 
@@ -205,10 +207,6 @@ export default function Page() {
 
         /* ---------- UI ---------- */
         function initUI() {
-            const menuBtn = document.getElementById("menuBtn");
-            const mobileNav = document.getElementById("mobileNav");
-            menuBtn.addEventListener("click", () => mobileNav.classList.toggle("hidden"));
-            mobileNav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => mobileNav.classList.add("hidden")));
 
             document.querySelectorAll(".filter-btn").forEach(btn => {
                 btn.addEventListener("click", () => {
@@ -318,7 +316,7 @@ export default function Page() {
                         <img src="techhodu_logo.svg" alt="Tech Hodu" className="h-9 w-9 object-contain transition-transform duration-700" />
                         <span className="font-display font-bold tracking-tight text-[17px] uppercase leading-none">Tech<br />Hodu<span className="text-ember">.</span></span>
                     </a>
-                    <nav className="flex items-center gap-9 font-mono text-[10px] uppercase tracking-[0.2em] text-deep overflow-x-auto whitespace-nowrap scroll-smooth">
+                    <nav className="hidden lg:flex items-center gap-9 font-mono text-[10px] uppercase tracking-[0.2em] text-deep overflow-x-auto whitespace-nowrap scroll-smooth">
                         <a href="#home" className="relative hover:text-forest transition"><span className="text-ember">01.</span>
                             Home</a>
                         <a href="#services" className="relative hover:text-forest transition"><span className="text-ember">02.</span>
@@ -331,23 +329,23 @@ export default function Page() {
                             Blogs</a>
                     </nav>
                     <div className="flex items-center gap-3">
-                        <a href="#contact" data-cursor="hover" className="btn-square hidden sm:inline-flex items-center gap-2 bg-ink text-black font-bold font-mono text-[11px] uppercase tracking-[0.16em] px-5 py-3 border border-ink">
+                        <a href="#contact" data-cursor="hover" className="btn-square hidden lg:inline-flex items-center gap-2 bg-ink text-black font-bold font-mono text-[11px] uppercase tracking-[0.16em] px-5 py-3 border border-ink">
                             <span className="fill"></span><span className="relative">Let's Talk</span>
                         </a>
-                        <button id="menuBtn" className="lg:hidden w-10 h-10 border border-n2 grid place-items-center" aria-label="Open menu">
+                        <button onClick={() => setMobileMenuOpen(o => !o)} className="lg:hidden w-10 h-10 border border-n2 grid place-items-center" aria-label="Open menu">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                 <path d="M4 8h16M4 16h16" />
                             </svg>
                         </button>
                     </div>
                 </div>
-                <div id="mobileNav" className="hidden lg:hidden border-t border-n2 bg-white px-5 py-5 space-y-4 font-mono text-xs uppercase tracking-widest">
-                    <a href="#home" className="block">01. Home</a>
-                    <a href="#services" className="block">02. Services</a>
-                    <a href="#work" className="block">03. Work</a>
-                    <a href="#why-us" className="block">04. Why Us</a>
-                    <a href="#blogs" className="block">05. Blogs</a>
-                    <a href="#contact" className="inline-block mt-2 bg-ink text-white px-5 py-2.5">Let's Talk</a>
+                <div className={`${mobileMenuOpen ? 'block' : 'hidden'} border-t border-n2 bg-white px-5 py-5 space-y-4 font-mono text-xs uppercase tracking-widest`}>
+                    <a href="#home" className="block" onClick={() => setMobileMenuOpen(false)}>01. Home</a>
+                    <a href="#services" className="block" onClick={() => setMobileMenuOpen(false)}>02. Services</a>
+                    <a href="#work" className="block" onClick={() => setMobileMenuOpen(false)}>03. Work</a>
+                    <a href="#why-us" className="block" onClick={() => setMobileMenuOpen(false)}>04. Why Us</a>
+                    <a href="#blogs" className="block" onClick={() => setMobileMenuOpen(false)}>05. Blogs</a>
+                    <a href="#contact" className="inline-block mt-2 bg-ink text-white px-5 py-2.5" onClick={() => setMobileMenuOpen(false)}>Let's Talk</a>
                 </div>
             </header>
 
@@ -742,7 +740,7 @@ export default function Page() {
                         <a href="https://powerfiling.com/" target='_blank'>
                             <article data-cat="b2b" data-cursor="view" className="reveal-card work-tile group bg-white border border-n2 overflow-hidden">
                                 <div className="relative overflow-hidden aspect-[16/10]">
-                                    <img className="w-full h-full object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-110" src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1400&q=80" alt="Nexora" />
+                                    <img className="w-full h-full object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-110" src="./img/power.png" alt="Nexora" />
                                     <div className="absolute inset-0 bg-gradient-to-t from-[#0f1518]/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                                     </div>
                                     <span className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 font-mono text-[9px] uppercase tracking-huge text-forest">B2B
@@ -782,10 +780,10 @@ export default function Page() {
                         <a href="https://www.granmade.in/" target='_blank'>
                             <article data-cat="commerce" data-cursor="view" className="reveal-card work-tile group bg-white border border-n2 overflow-hidden md:translate-y-10">
                                 <div className="relative overflow-hidden aspect-[16/10]">
-                                    <img className="w-full h-full object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-110" src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1400&q=80" alt="Lumen" />
+                                    <img className="w-full h-full object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-110" src="./img/granmade.png" alt="Lumen" />
                                     <div className="absolute inset-0 bg-gradient-to-t from-[#0f1518]/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                                     </div>
-                                    <span className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 font-mono text-[9px] uppercase tracking-huge text-forest">Ecommerce</span>
+                                    <span className="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 font-mono text-[9px] uppercase tracking-huge text-forest">Ecommerce</span>
                                 </div>
                                 <div className="p-7">
                                     <div className="flex items-start justify-between gap-4">
@@ -819,7 +817,7 @@ export default function Page() {
                         <a href="https://www.kimbal.io/" target='_blank'>
                             <article data-cat="product" data-cursor="view" className="reveal-card work-tile group bg-white border border-n2 overflow-hidden">
                                 <div className="relative overflow-hidden aspect-[16/10]">
-                                    <img className="w-full h-full object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-110" src="https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=1400&q=80" alt="Solvio" />
+                                    <img className="w-full h-full object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-110" src="/img/kimbal.png" alt="Solvio" />
                                     <div className="absolute inset-0 bg-gradient-to-t from-[#0f1518]/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                                     </div>
                                     <span className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 font-mono text-[9px] uppercase tracking-huge text-forest">Product
@@ -858,10 +856,10 @@ export default function Page() {
 
                             <article data-cat="b2b" data-cursor="view" className="reveal-card work-tile group bg-white border border-n2 overflow-hidden md:translate-y-10">
                                 <div className="relative overflow-hidden aspect-[16/10]">
-                                    <img className="w-full h-full object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-110" src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1400&q=80" alt="Kindred" />
+                                    <img className="w-full h-full object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-110" src="/img/ebirasat.png" />
                                     <div className="absolute inset-0 bg-gradient-to-t from-[#0f1518]/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                                     </div>
-                                    <span className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 font-mono text-[9px] uppercase tracking-huge text-forest">B2B
+                                    <span className="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 font-mono text-[9px] uppercase tracking-huge text-forest">B2B
                                         · Consulting</span>
                                 </div>
                                 <div className="p-7">
@@ -1001,15 +999,11 @@ export default function Page() {
                     <div className="relative min-h-[380px] md:min-h-[320px]">
                         <figure className="tsl active">
                             <div className="grid md:grid-cols-[auto_1fr] gap-8 items-center">
-                                <img className="w-20 h-20 md:w-24 md:h-24 object-cover border-2 border-forest" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80" alt="Carol Corman" />
+                                <img className="w-20 h-20 md:w-24 md:h-24 object-cover border-2 border-forest" src="./testimonial_image/power_logo.png" alt="PowerFiling" />
                                 <div>
-                                    <p className="font-mono text-[10px] uppercase tracking-huge text-ember mb-3">★★★★★ · CEO, Prism
-                                        Inc.</p>
-                                    <blockquote className="font-display text-2xl md:text-4xl leading-snug text-ink">"They stepped in
-                                        seamlessly after a rough experience with a previous partner — flexible, sharp, and
-                                        genuinely collaborative from kickoff to launch."</blockquote>
-                                    <figcaption className="mt-5 font-mono text-[10px] uppercase tracking-widest text-slate">Carol
-                                        Corman · President, Prism Inc</figcaption>
+                                    <p className="font-mono text-[10px] uppercase tracking-huge text-ember mb-3">★★★★★ · PowerFiling</p>
+                                    <blockquote className="font-display text-2xl md:text-4xl leading-snug text-ink">"Excellent teamwork and on-schedule delivery. The team's technical expertise enabled the successful development of a streamlining the filing process and significantly improving user experience and overall system performance."</blockquote>
+                                    <figcaption className="mt-5 font-mono text-[10px] uppercase tracking-widest text-slate">PowerFiling</figcaption>
                                 </div>
                             </div>
                             <div className="mt-8 grid grid-cols-2 gap-4 max-w-sm">
@@ -1025,15 +1019,11 @@ export default function Page() {
                         </figure>
                         <figure className="tsl">
                             <div className="grid md:grid-cols-[auto_1fr] gap-8 items-center">
-                                <img className="w-20 h-20 md:w-24 md:h-24 object-cover border-2 border-forest" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" alt="Pinakin Patel" />
+                                <img className="w-20 h-20 md:w-24 md:h-24 object-cover border-2 border-forest" src="./testimonial_image/rama_logo.jpg" alt="Rama Collection Shop" />
                                 <div>
-                                    <p className="font-mono text-[10px] uppercase tracking-huge text-ember mb-3">★★★★★ · CEO, IT
-                                        Concept</p>
-                                    <blockquote className="font-display text-2xl md:text-4xl leading-snug text-ink">"They took the
-                                        time to understand our business and goals. Clear communication, on-track delivery — it
-                                        felt like a partner, not a vendor."</blockquote>
-                                    <figcaption className="mt-5 font-mono text-[10px] uppercase tracking-widest text-slate">Pinakin
-                                        Patel · CEO, IT Concept</figcaption>
+                                    <p className="font-mono text-[10px] uppercase tracking-huge text-ember mb-3">★★★★★ · Rama Collection Shop</p>
+                                    <blockquote className="font-display text-2xl md:text-4xl leading-snug text-ink">"Excellent teamwork and on-schedule delivery. The IT firm's technical expertise enabled rapid scaling and significantly enhanced performance across all digital platforms."</blockquote>
+                                    <figcaption className="mt-5 font-mono text-[10px] uppercase tracking-widest text-slate">Rama Collection Shop</figcaption>
                                 </div>
                             </div>
                             <div className="mt-8 grid grid-cols-2 gap-4 max-w-sm">
@@ -1049,15 +1039,11 @@ export default function Page() {
                         </figure>
                         <figure className="tsl">
                             <div className="grid md:grid-cols-[auto_1fr] gap-8 items-center">
-                                <img className="w-20 h-20 md:w-24 md:h-24 object-cover border-2 border-forest" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80" alt="Ankita Chaturvedi" />
+                                <img className="w-20 h-20 md:w-24 md:h-24 object-cover border-2 border-forest" src="./testimonial_image/khabar_logo.jpeg" alt="Khabar Taazgi" />
                                 <div>
-                                    <p className="font-mono text-[10px] uppercase tracking-huge text-ember mb-3">★★★★★ · GTM Lead,
-                                        Shopline</p>
-                                    <blockquote className="font-display text-2xl md:text-4xl leading-snug text-ink">"Deep research,
-                                        sharp CRO focus, flawless design and dev. The site now feels like our unfair competitive
-                                        advantage."</blockquote>
-                                    <figcaption className="mt-5 font-mono text-[10px] uppercase tracking-widest text-slate">Ankita
-                                        Chaturvedi · GTM Lead, Shopline</figcaption>
+                                    <p className="font-mono text-[10px] uppercase tracking-huge text-ember mb-3">★★★★★ · Khabar Taazgi</p>
+                                    <blockquote className="font-display text-2xl md:text-4xl leading-snug text-ink">"Great collaboration and timely execution. ITfirm's development expertise helped us scale faster and improve performance across platforms."</blockquote>
+                                    <figcaption className="mt-5 font-mono text-[10px] uppercase tracking-widest text-slate">Khabar Taazgi</figcaption>
                                 </div>
                             </div>
                             <div className="mt-8 grid grid-cols-2 gap-4 max-w-sm">
