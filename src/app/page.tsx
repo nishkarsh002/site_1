@@ -817,7 +817,7 @@ export default function Page() {
                         <a href="https://www.kimbal.io/" target='_blank'>
                             <article data-cat="product" data-cursor="view" className="reveal-card work-tile group bg-white border border-n2 overflow-hidden">
                                 <div className="relative overflow-hidden aspect-[16/10]">
-                                    <img className="w-full h-full object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-110" src="/img/kimbal.png" alt="Solvio" />
+                                    <img className="w-full h-full object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-110" src="./img/kimbal.png" alt="Solvio" />
                                     <div className="absolute inset-0 bg-gradient-to-t from-[#0f1518]/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                                     </div>
                                     <span className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 font-mono text-[9px] uppercase tracking-huge text-forest">Product
