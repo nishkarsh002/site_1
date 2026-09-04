@@ -357,14 +357,14 @@ export default function Page() {
                     <div className="grid lg:grid-cols-[1.05fr_.95fr] gap-10 items-start">
                         <div>
                             <h1 id="heroTitle" className="font-display font-extrabold uppercase tracking-[-0.02em] text-ink mt-7 leading-[0.88]" style={{ fontSize: 'clamp(28px, 7.5vw, 86px)' }}>
-                                Make your brand impossible to ignore.
+                                Make your <span>brand</span> impossible to ignore.
                             </h1>
                             <p id="hSub" className="mt-7 max-w-md text-[15px] leading-relaxed text-slategrn">
                                 We are a full-platform creative studio. Strategy, identity, web design and performance
                                 engineering — shipped by one senior team, end to end.
                             </p>
                             <div id="hCta" className="mt-9 flex flex-wrap items-center gap-4">
-                                <a href="#work" data-cursor="hover" className="btn-square inline-flex items-center gap-3 bg-forest text-black font-bold font-mono text-[11px] uppercase tracking-[0.16em] px-5 py-3 sm:px-7 sm:py-4">
+                                <a href="#contact" data-cursor="hover" className="btn-square inline-flex items-center gap-3 bg-forest text-black font-bold font-mono text-[11px] uppercase tracking-[0.16em] px-5 py-3 sm:px-7 sm:py-4">
                                     <span className="fill"></span>
                                     <span className="relative">Start a project</span>
                                     <svg className="relative" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
