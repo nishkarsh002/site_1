@@ -536,15 +536,15 @@ export default function Page() {
                                 <div className="relative grid grid-cols-3 gap-2 mt-8">
                                     <div className="border border-white/10 bg-white/5 p-3">
                                         <p className="font-mono text-[9px] uppercase text-white/50">LCP</p>
-                                        <p className="font-display text-2xl font-bold text-leaf">1.1s</p>
+                                        <p className="font-display text-base sm:text-xl font-bold text-leaf">1.1s</p>
                                     </div>
                                     <div className="border border-white/10 bg-white/5 p-3">
                                         <p className="font-mono text-[9px] uppercase text-white/50">INP</p>
-                                        <p className="font-display text-2xl font-bold text-leaf">95ms</p>
+                                        <p className="font-display text-base sm:text-xl font-bold text-leaf">95ms</p>
                                     </div>
                                     <div className="border border-white/10 bg-white/5 p-3">
                                         <p className="font-mono text-[9px] uppercase text-white/50">CLS</p>
-                                        <p className="font-display text-2xl font-bold text-leaf">0.01</p>
+                                        <p className="font-display text-base sm:text-xl font-bold text-leaf">0.01</p>
                                     </div>
                                 </div>
                             </article>
