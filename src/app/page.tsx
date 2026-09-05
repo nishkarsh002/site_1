@@ -396,8 +396,7 @@ export default function Page() {
                                         <div className="show-cap absolute bottom-0 left-0 right-0 p-6 lg:p-7">
                                             <p className="font-mono text-[10px] uppercase tracking-huge text-leaf">Case 01 — B2B / SaaS
                                             </p>
-                                            <h3 className="font-display font-bold uppercase text-white text-2xl lg:text-3xl mt-1 leading-none">
-                                                Powerfilling</h3>
+                                            <h3 className="font-display font-bold uppercase text-white text-2xl lg:text-3xl mt-1 leading-none"> Powerfilling</h3>
                                             <p className="text-white/70 text-sm mt-2 max-w-sm">81% top-3 keywords · 47% demo conversion
                                             </p>
                                         </div>
